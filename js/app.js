@@ -2,7 +2,7 @@ auth0.createAuth0Client({
   domain: "dev-pbahhf4mgjtjvfb1.us.auth0.com",
   clientId: "Mihra2EsfE2xW2obSchWIqLwd0li41zx",
   authorizationParams: {
-    redirect_uri: window.location.origin
+    redirect_uri: "https://jrmafes.github.io/pizza-42/"
   }
 }).then(async (auth0Client) => {
   // Assumes a button with id "login" in the DOM
