@@ -44,4 +44,3 @@ auth0.createAuth0Client({
     profileElement.style.display = "none";
   }
 });
-}
