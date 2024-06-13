@@ -46,4 +46,5 @@ auth0.createAuth0Client({
 });
 
 function login() {
+  console.log("Login function called");
 }
