@@ -44,7 +44,4 @@ auth0.createAuth0Client({
     profileElement.style.display = "none";
   }
 });
-
-function login() {
-  console.log("Login function called");
 }
