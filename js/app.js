@@ -8,6 +8,27 @@ auth0.createAuth0Client({
   // Assumes a button with id "login" in the DOM
   const loginButton = document.getElementById("login");
 
+  const updateUI = async () => {
+  const isAuthenticated = await auth0.isAuthenticated();
+
+  document.getElementById("login").classList.toggle("hidden", isAuthenticated);
+  document.querySelectorAll(".auth-visible").forEach(e => e.classList.toggle("hidden", !isAuthenticated));
+  document.querySelectorAll(".auth-invisible").forEach(e => e.classList.toggle("hidden", isAuthenticated));
+
+  if (isAuthenticated) {
+    const user = await auth0.getUser();
+    document.getElementById("user-name").textContent = user.name;
+    document.getElementById("profile-image").src = user.picture;
+    document.getElementById("user-email").textContent = user.email;
+    document.getElementById("profile-data").textContent = JSON.stringify(user, null, 2);
+  }
+};
+
+window.onload = async () => {
+  await auth0.handleRedirectCallback();
+  updateUI();
+};
+
   loginButton.addEventListener("click", (e) => {
     e.preventDefault();
     auth0Client.loginWithRedirect();
