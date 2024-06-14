@@ -49,6 +49,18 @@ window.onload = async () => {
     auth0Client.logout();
   });
 
+  const login = async () => {
+  await auth0.loginWithRedirect({
+    redirect_uri: window.location.origin
+  });
+};
+
+const logout = () => {
+  auth0.logout({
+    returnTo: window.location.origin
+  });
+};
+
   const isAuthenticated = await auth0Client.isAuthenticated();
   const userProfile = await auth0Client.getUser();
 
